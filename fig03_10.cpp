@@ -13,6 +13,6 @@ int main()
 
   // display initial value of courseName for each GradeBook
   cout << "gradeBook1 created for course: " << gradeBook1.getCourseName()
-       << "\ngradeBook2 created for ourse: " << gradeBook2.getCourseName()
+       << "\ngradeBook2 created for course: " << gradeBook2.getCourseName()
        << endl;
 } // end main
