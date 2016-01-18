@@ -1,5 +1,6 @@
-// fig 3.10: fig03_10.cpp
-// Including class GradeBook from file GradeBook.h for use in main
+// fig 3.13: fig03_13.cpp
+// GradeBook class demonstration after separating
+// its interface from its implementation
 #include <iostream>
 #include "GradeBook.h"  // include definition of class GradeBook
 using namespace std;

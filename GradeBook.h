@@ -1,38 +1,17 @@
-// Fig. 3.9: GradeBook.h
-// GradeBook class definition in a separate class from main.
-#include <iostream>
+// Fig. 3.11: GradeBook.h
+// GradeBook class definition. This file presents GradeBook's public
+// interface without revealing the implementations of GradeBook's member 
+// functions, which are defined in GradeBook.cpp
 #include <string> // class GradeBook uses C++ standard string class
 
 // GradeBook class definition
 class GradeBook
 {
- public:
-  // constructor initializes courseName with string supplied as argument
-  explicit GradeBook(std::string name)
-    :courseName(name) // member initializer to initialize courseName
-  {
-    // empty body
-  }  // end GradeBook constructor
-
-  // function to set the course name
-  void setCourseName(std::string name)
-  {
-    courseName = name; // store the course name in the object
-  }  // end function setCourseName
-
-  // function to get the course name
-  std::string getCourseName() const
-    {
-      return courseName;  // return object's courseName
-    }  // end function getCourseName
-
-  // display a welcome message to the GradeBook user
-  void displayMessage() const
-  {
-    // call getCourseName to get the course name
-    std::cout << "Welcome to the grade book for\n" << getCourseName()
-	      << "!" << std::endl;
-  }  // end function displayMessage
- private:
+public:
+  explicit GradeBook(std::string); // constructor initialize courseName
+  void setCourseName(std::string); // sets the course name
+  std::string getCourseName() const; // gets the course name
+  void displayMessage() const; // displays a welcome message
+private:
   std::string courseName; // course name for this GradeBook
 }; // end class GradeBook
