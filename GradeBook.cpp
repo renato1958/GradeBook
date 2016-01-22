@@ -43,7 +43,7 @@ void GradeBook::determineClassAverage() const
 {
   // initialization phase
   int total = 0; // sum of grades entered by users
-  unsigned int gradeCounter = 1; number of grade to be entered next
+  unsigned int gradeCounter = 1; // number of grade to be entered next
   
   // processing phase
   while(gradeCounter <= 10) // loop 10 times
@@ -56,7 +56,7 @@ void GradeBook::determineClassAverage() const
   } // end while
   
   // termination phase
-  int average = total / 10; ok to mix declaration and calculation
+  int average = total / 10; // ok to mix declaration and calculation
   
   // display total and average of grades
   cout << "\nTotal of all 10 grades is " << total << endl;
