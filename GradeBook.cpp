@@ -1,7 +1,8 @@
-// Fig 4.9: GradeBook.cpp
+// Fig 4.13: GradeBook.cpp
 // Member-function definitions for class GradeBook that solves the
-// class average problem with counter-controlled repetition.
+// class average problem with sentinel-controlled repetition.
 #include <iostream>
+#include <iomanip> // parametrized stream manipulators
 #include "GradeBook.h" // include definition of class GradeBook
 using namespace std;
 
@@ -20,8 +21,8 @@ void GradeBook::setCourseName(string name)
   else  // if name is longer than 25 characters
   { // set courseName to first 25 characters of parameter name
     courseName = name.substr(0, 25); // select first 25 characters
-    cerr << "Name\"" << name << "exceeds maximum length (25).\n"
-    << "Limiting courseName to first 25 characters.\n";
+    cerr << "Name \"" << name << "exceeds maximum length (25).\n"
+    << "Limiting courseName to first 25 characters.\n" << endl;
   } // end if...else
 } // end function setCourseName
 
@@ -43,22 +44,37 @@ void GradeBook::determineClassAverage() const
 {
   // initialization phase
   int total = 0; // sum of grades entered by users
-  unsigned int gradeCounter = 1; // number of grade to be entered next
+  unsigned int gradeCounter = 0; // number of grades entered
   
   // processing phase
-  while(gradeCounter <= 10) // loop 10 times
+  // prompt for input and read grade from user
+  cout << "Enter grade or -1 to quit: ";
+  int grade = 0; // grade value
+  cin >> grade; // input grade or sentinel value
+  
+  // loop until sentinel value read from user
+  while(grade != -1) // while grade is not -1
   {
-      cout << "Enter grade: "; // prompt for input
-      int grade = 0; // grade value entered by user
-      cin >> grade; // input next grade
-      total = total + grade;
-      gradeCounter = gradeCounter + 1; // increment counter by 1      
+      total = total + grade; // add grade to total
+      gradeCounter = gradeCounter + 1; // increment counter
+      
+      // prompt for input and read next grade from user
+      cout << "Enter grade or -1 to quit: ";
+      cin >> grade; // input grade or sentinel value
   } // end while
   
   // termination phase
-  int average = total / 10; // ok to mix declaration and calculation
+  if(gradeCounter != 0) // if user entered at least one grade...
+  {
+      // calculate average of all grades entered
+      double average = static_cast<double>(total) / gradeCounter;
   
-  // display total and average of grades
-  cout << "\nTotal of all 10 grades is " << total << endl;
-  cout << "Class average is " << average << endl;
+      // display total and average (with two digits of precision)
+      cout << "\nTotal of all " << gradeCounter << " grades entered is "
+      << total << endl;
+      cout << setprecision(2) << fixed;
+      cout << "Class average is " << average << endl;
+  } // end if
+  else // no grades were entered, so output appropriate message
+      cout << "No grades were entered" << endl;
 } // end function determineClassAverage
