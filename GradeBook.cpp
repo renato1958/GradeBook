@@ -70,7 +70,7 @@ void GradeBook::determineClassAverage() const
       double average = static_cast<double>(total) / gradeCounter;
   
       // display total and average (with two digits of precision)
-      cout << "\nTotal of all " << gradeCounter << "grades entered is "
+      cout << "\nTotal of all " << gradeCounter << " grades entered is "
       << total << endl;
       cout << setprecision(2) << fixed;
       cout << "Class average is " << average << endl;
